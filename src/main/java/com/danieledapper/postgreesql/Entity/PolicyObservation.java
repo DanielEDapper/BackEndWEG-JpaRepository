@@ -1,14 +1,15 @@
 package com.danieledapper.postgreesql.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Série temporal do índice de rigor das políticas de resposta à
+ * pandemia (stringency index), numa escala de 0 a 100.
+ */
 @Entity
 @Table(name = "policy_observation")
 @NoArgsConstructor
@@ -18,12 +19,9 @@ import java.util.Date;
 @Builder
 public class PolicyObservation
 {
-    @Id
-    @Column(name = "location_id")
-    private Long locationId;
-
-    @Column(name = "onservation_date")
-    private Date observationDate;
+    @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private LocationGeneralId id;
 
     @Column(name = "stringency_index")
     private BigDecimal stringencyIndex;

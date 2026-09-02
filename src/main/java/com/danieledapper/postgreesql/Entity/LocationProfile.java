@@ -5,6 +5,14 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+/**
+ * Atributos demográficos e econômicos estáveis de uma localidade
+ * (população, PIB per capita, IDH, expectativa de vida, entre outros).
+ * Mantidos separados de {@link Location} porque não variam por data,
+ * evitando repetição nas tabelas de série temporal.
+ * Relacionamento 1:1 com {@link Location}, compartilhando a mesma
+ * chave primária (location_id).
+ */
 @Entity
 @Table(name = "location_profile")
 @NoArgsConstructor

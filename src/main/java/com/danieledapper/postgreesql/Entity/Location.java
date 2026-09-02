@@ -4,7 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 /**
- * Representa uma localização do Sistema*/
+ * Representa uma localidade da base OWID: país, território,
+ * agregação continental ou outra unidade de análise definida
+ * em {@link LocationType}.
+ * É a entidade central do modelo — todas as séries temporais
+ * (epidemiologia, testagem, vacinação, etc.) partem dela.
+ */
 @Entity
 @Table(name = "location")
 @NoArgsConstructor

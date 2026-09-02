@@ -4,10 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 /**
- * Representa um continente no sistema
- * Se relaciona com localização atravez do Identificador Único
- * - Um continente pode ter varias localizações
- * - Uma localização pode ter apenas um continente*/
+ * Tabela de domínio com os continentes usados para agrupar
+ * localidades do tipo país/território.
+ */
 @Entity
 @Table(name = "continent")
 @NoArgsConstructor

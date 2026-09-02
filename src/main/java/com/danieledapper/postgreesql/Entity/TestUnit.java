@@ -3,6 +3,11 @@ package com.danieledapper.postgreesql.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Tabela de domínio com as unidades de medida possíveis para
+ * testagem (pessoas testadas, amostras testadas, testes realizados
+ * ou unidade não especificada pela fonte).
+ */
 @Entity
 @Table(name = "test_unit")
 @NoArgsConstructor

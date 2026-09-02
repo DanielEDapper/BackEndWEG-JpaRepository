@@ -6,6 +6,11 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Série temporal de ocupação hospitalar e de UTI, incluindo
+ * admissões semanais. Nem toda localidade/data possui este dado —
+ * depende do que foi reportado pela fonte original.
+ */
 @Entity
 @Table(name = "hospitalization_observation")
 @NoArgsConstructor
@@ -15,12 +20,9 @@ import java.util.Date;
 @Builder
 public class HospitalizationObservation
 {
-    @Id
-    @Column(name = "location_id")
-    private Long locationId;
-
-    @Column(name = "observation_date")
-    private Date observationDate;
+    @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private LocationGeneralId id;
 
     @Column(name = "icu_patients")
     private BigDecimal icuPatients;

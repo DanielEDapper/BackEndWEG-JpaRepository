@@ -5,24 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
+/**
+ * Série temporal de casos e óbitos por COVID-19 (valores absolutos,
+ * suavizados e por milhão de habitantes), além da taxa de reprodução
+ * do vírus. Um registro por localidade/data.
+ */
 @Entity
-@Table(name = "location_type")
-@NoArgsConstructor
+@Table(name = "epidemiology_observation", schema = "covid")
 @AllArgsConstructor
+@NoArgsConstructor
 @Setter
 @Getter
 @Builder
 public class EpidemiologyObservation
 {
-    @Id
+    @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "location_id")
-    private Long id;
-
-    @Column(name = "observation_date")
-    private LocalDateTime observationDate;
+    private LocationGeneralId id;
 
     @Column(name = "total_cases")
     private BigDecimal totalCases;

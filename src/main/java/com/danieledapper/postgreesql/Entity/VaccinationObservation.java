@@ -6,6 +6,11 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Série temporal de vacinação: doses aplicadas, pessoas vacinadas
+ * (parcial e totalmente) e reforços, em valores absolutos e por
+ * cem habitantes.
+ */
 @Entity
 @Table(name = "vaccination_observation")
 @NoArgsConstructor
@@ -15,13 +20,9 @@ import java.util.Date;
 @Builder
 public class VaccinationObservation
 {
-    @Id
+    @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "location_id")
-    private Long id;
-
-    @Column(name = "observation_date")
-    private Date observation;
+    private LocationGeneralId id;
 
     @Column(name = "total_vaccinations")
     private BigDecimal totalVaccination;

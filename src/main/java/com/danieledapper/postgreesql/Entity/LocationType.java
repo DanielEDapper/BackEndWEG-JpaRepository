@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 /**
- * */
+ * Tabela de domínio que classifica a natureza de uma localidade
+ * (país, continente, união política, agregação mundial, etc.).
+ * Usada como referência pela entidade {@link Location}.
+ */
 @Entity
 @Table(name = "location_type")
 @NoArgsConstructor

@@ -6,8 +6,13 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Série temporal de mortalidade em excesso: comparação entre óbitos
+ * observados e a média histórica esperada para o período.
+ * Disponível apenas para um subconjunto das localidades/datas.
+ */
 @Entity
-@Table(name = "location_type")
+@Table(name = "excess_mortality_observation")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -15,12 +20,9 @@ import java.util.Date;
 @Builder
 public class ExcessMortalityObservation
 {
-    @Id
-    @Column(name = "location_id")
-    private Long locationId;
-
-    @Column(name = "observation_date")
-    private Date observationDate;
+    @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private LocationGeneralId id;
 
     @Column(name = "excess_mortality_cumulative_absolute")
     private BigDecimal excessMortalityCumulativeAbsolute;
@@ -32,5 +34,5 @@ public class ExcessMortalityObservation
     private BigDecimal excessMortality;
 
     @Column(name = "excess_mortality_cumulative_per_million")
-    private BigDecimal excessMortalityCumulativePerMilion;
+    private BigDecimal excessMortalityCumulativePerMillion;
 }

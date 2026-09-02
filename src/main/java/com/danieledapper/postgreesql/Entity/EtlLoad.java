@@ -5,6 +5,13 @@ import lombok.*;
 
 import java.time.OffsetDateTime;
 
+/**
+ * Registro de auditoria de cada execução de carga (ETL) do CSV da OWID.
+ * Guarda o nome do arquivo importado e as contagens de linhas brutas,
+ * dias normalizados e duplicidades complementares consolidadas.
+ * Não representa dado epidemiológico — é histórico técnico do processo
+ * de carga, não exposto pela API de consulta.
+ */
 @Entity
 @Table(name = "etl_load")
 @NoArgsConstructor
