@@ -8,7 +8,7 @@ import lombok.*;
  * localidades do tipo país/território.
  */
 @Entity
-@Table(name = "continent")
+@Table(name = "continent", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

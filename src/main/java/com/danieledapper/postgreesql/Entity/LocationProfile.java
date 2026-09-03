@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  * chave primária (location_id).
  */
 @Entity
-@Table(name = "location_profile")
+@Table(name = "location_profile", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -23,9 +23,13 @@ import java.math.BigDecimal;
 public class LocationProfile {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id")
     private Long id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     @Column(name = "population")
     private Long population;
@@ -39,7 +43,7 @@ public class LocationProfile {
     @Column(name = "aged_65_older")
     private BigDecimal aged65Older;
 
-    @Column(name = "aged_70_aged")
+    @Column(name = "aged_70_older")
     private BigDecimal aged70Older;
 
     @Column(name = "gdp_per_capita")

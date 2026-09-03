@@ -12,7 +12,7 @@ import java.util.Date;
  * localidade e é referenciada via {@link TestUnit}.
  */
 @Entity
-@Table(name = "testing_observation")
+@Table(name = "testing_observation", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -23,6 +23,14 @@ public class TestingObservation
     @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "location_id", referencedColumnName = "location_id"),
+            @JoinColumn(name = "observation_date", referencedColumnName = "observation_date")
+    })
+    private ObservationDay observationDay;
 
     @Column(name = "total_tests")
     private BigDecimal totalTests;

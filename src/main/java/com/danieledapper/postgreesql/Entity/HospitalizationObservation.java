@@ -12,7 +12,7 @@ import java.util.Date;
  * depende do que foi reportado pela fonte original.
  */
 @Entity
-@Table(name = "hospitalization_observation")
+@Table(name = "hospitalization_observation", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -23,6 +23,14 @@ public class HospitalizationObservation
     @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "location_id", referencedColumnName = "location_id"),
+            @JoinColumn(name = "observation_date", referencedColumnName = "observation_date")
+    })
+    private ObservationDay observationDay;
 
     @Column(name = "icu_patients")
     private BigDecimal icuPatients;

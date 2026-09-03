@@ -12,7 +12,7 @@ import java.util.Date;
  * Disponível apenas para um subconjunto das localidades/datas.
  */
 @Entity
-@Table(name = "excess_mortality_observation")
+@Table(name = "excess_mortality_observation", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -23,6 +23,14 @@ public class ExcessMortalityObservation
     @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "location_id", referencedColumnName = "location_id"),
+            @JoinColumn(name = "observation_date", referencedColumnName = "observation_date")
+    })
+    private ObservationDay observationDay;
 
     @Column(name = "excess_mortality_cumulative_absolute")
     private BigDecimal excessMortalityCumulativeAbsolute;

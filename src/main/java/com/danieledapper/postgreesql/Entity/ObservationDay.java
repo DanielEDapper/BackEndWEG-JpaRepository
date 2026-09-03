@@ -1,9 +1,6 @@
 package com.danieledapper.postgreesql.Entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -15,7 +12,7 @@ import java.util.Date;
  * referência para todas as tabelas de fatos diários.
  */
 @Entity
-@Table(name = "observation_day")
+@Table(name = "observation_day", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -28,10 +25,11 @@ public class ObservationDay
      * temporal associadas: identifica unicamente uma observação pelo
      * par (localidade, data).
      */
-    @Id
-    @Column(name = "location_id")
-    private Long locationId;
 
-    @Column(name = "observation_date")
-    private Date observationDate;
+    @EmbeddedId
+    private LocationGeneralId id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private Location location;
 }

@@ -11,7 +11,7 @@ import java.util.Date;
  * pandemia (stringency index), numa escala de 0 a 100.
  */
 @Entity
-@Table(name = "policy_observation")
+@Table(name = "policy_observation", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -22,6 +22,14 @@ public class PolicyObservation
     @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "location_id", referencedColumnName = "location_id"),
+            @JoinColumn(name = "observation_date", referencedColumnName = "observation_date")
+    })
+    private ObservationDay observationDay;
 
     @Column(name = "stringency_index")
     private BigDecimal stringencyIndex;

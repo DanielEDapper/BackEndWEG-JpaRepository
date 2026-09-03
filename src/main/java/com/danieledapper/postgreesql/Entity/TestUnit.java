@@ -9,7 +9,7 @@ import lombok.*;
  * ou unidade não especificada pela fonte).
  */
 @Entity
-@Table(name = "test_unit")
+@Table(name = "test_unit", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter

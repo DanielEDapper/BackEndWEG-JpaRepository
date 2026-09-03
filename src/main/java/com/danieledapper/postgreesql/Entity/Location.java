@@ -11,7 +11,7 @@ import lombok.*;
  * (epidemiologia, testagem, vacinação, etc.) partem dela.
  */
 @Entity
-@Table(name = "location")
+@Table(name = "location", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -30,9 +30,11 @@ public class Location
     @Column(name = "name", length = 120)
     private String name;
 
-    @Column(name = "continent_id")
-    private Short continentId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "continent_id")
+    private Continent continentId;
 
-    @Column(name = "location_type_code", length = 30)
-    private String locationTypeCode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "locationTypeCode")
+    private LocationType locationType;
 }

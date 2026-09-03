@@ -24,6 +24,14 @@ public class EpidemiologyObservation
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
 
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "location_id", referencedColumnName = "location_id"),
+            @JoinColumn(name = "observation_date", referencedColumnName = "observation_date")
+    })
+    private ObservationDay observationDay;
+
     @Column(name = "total_cases")
     private BigDecimal totalCases;
 

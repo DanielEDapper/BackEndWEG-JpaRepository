@@ -9,7 +9,7 @@ import lombok.*;
  * Usada como referência pela entidade {@link Location}.
  */
 @Entity
-@Table(name = "location_type")
+@Table(name = "location_type", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter

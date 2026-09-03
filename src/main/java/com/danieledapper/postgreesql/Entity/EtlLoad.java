@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
  * de carga, não exposto pela API de consulta.
  */
 @Entity
-@Table(name = "etl_load")
+@Table(name = "etl_load", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter

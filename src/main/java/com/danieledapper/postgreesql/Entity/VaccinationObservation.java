@@ -12,7 +12,7 @@ import java.util.Date;
  * cem habitantes.
  */
 @Entity
-@Table(name = "vaccination_observation")
+@Table(name = "vaccination_observation", schema = "covid")
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -23,6 +23,14 @@ public class VaccinationObservation
     @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
+
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name = "location_id", referencedColumnName = "location_id"),
+            @JoinColumn(name = "observation_date", referencedColumnName = "observation_date")
+    })
+    private ObservationDay observationDay;
 
     @Column(name = "total_vaccinations")
     private BigDecimal totalVaccination;
