@@ -29,6 +29,8 @@ public class ObservationDay
     @EmbeddedId
     private LocationGeneralId id;
 
+
+    @MapsId("location_id")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id")
     private Location location;

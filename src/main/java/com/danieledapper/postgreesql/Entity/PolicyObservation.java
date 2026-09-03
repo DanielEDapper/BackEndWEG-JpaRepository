@@ -20,7 +20,6 @@ import java.util.Date;
 public class PolicyObservation
 {
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
 
     @MapsId
@@ -31,6 +30,6 @@ public class PolicyObservation
     })
     private ObservationDay observationDay;
 
-    @Column(name = "stringency_index")
+    @Column(name = "stringency_index", nullable = false)
     private BigDecimal stringencyIndex;
 }

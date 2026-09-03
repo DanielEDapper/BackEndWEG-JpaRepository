@@ -31,7 +31,7 @@ public class LocationProfile {
     @JoinColumn(name = "location_id")
     private Location location;
 
-    @Column(name = "population")
+    @Column(name = "population", nullable = false)
     private Long population;
 
     @Column(name = "population_density")

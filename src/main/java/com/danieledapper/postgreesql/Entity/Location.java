@@ -24,17 +24,17 @@ public class Location
     @Column(name = "location_id")
     private Long id;
 
-    @Column(name = "iso_code", length = 12)
+    @Column(name = "iso_code", length = 12, nullable = false)
     private String isoCode;
 
-    @Column(name = "name", length = 120)
+    @Column(name = "name", length = 120, nullable = false)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "continent_id")
-    private Continent continentId;
+    private Continent continent;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "locationTypeCode")
+    @JoinColumn(name = "location_type_code", nullable = false)
     private LocationType locationType;
 }

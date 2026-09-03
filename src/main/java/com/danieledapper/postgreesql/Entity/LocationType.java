@@ -18,7 +18,6 @@ import lombok.*;
 public class LocationType
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "location_type_code", length = 30)
     private String locationTypeCode;
 

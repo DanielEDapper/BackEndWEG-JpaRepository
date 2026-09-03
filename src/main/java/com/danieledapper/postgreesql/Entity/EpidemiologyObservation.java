@@ -21,7 +21,6 @@ import java.math.BigDecimal;
 public class EpidemiologyObservation
 {
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
 
     @MapsId

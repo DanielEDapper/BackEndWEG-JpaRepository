@@ -21,7 +21,6 @@ import java.util.Date;
 public class ExcessMortalityObservation
 {
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
 
     @MapsId

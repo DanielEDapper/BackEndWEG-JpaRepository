@@ -21,7 +21,6 @@ import java.util.Date;
 public class TestingObservation
 {
     @EmbeddedId
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocationGeneralId id;
 
     @MapsId
@@ -56,6 +55,7 @@ public class TestingObservation
     @Column(name = "tests_per_case")
     private BigDecimal testsPerCase;
 
-    @Column(name = "test_unit_code")
-    private BigDecimal testUnitCode;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "test_unit_code")
+    private TestUnit testUnitCode;
 }
